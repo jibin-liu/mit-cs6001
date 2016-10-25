@@ -5,7 +5,6 @@ tests for calculate_power_root function
 from calculate_power_root import calculate_power_root
 import pytest
 import random
-import math
 
 
 class TestSquareRootCalculator(object):
@@ -28,6 +27,16 @@ class TestSquareRootCalculator(object):
         x = random.random()
         p = random.randint(1, 100)
         assert abs(calculate_power_root(x, p) - x ** (1 / p)) <= 0.0001
+
+    def test_negative_constant_integer(self):
+        assert calculate_power_root(-4, 2) == -2
+
+    def test_negative_decimal(self):
+        x = -random.random()
+        p = random.randint(1, 100)
+        math_res = x ** (1 / p)
+        func_res = calculate_power_root(x, p)
+        assert abs(func_res - math_res) <= 0.0001
 
 
 if __name__ == '__main__':

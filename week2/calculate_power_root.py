@@ -1,20 +1,23 @@
 """
-Use bisection search to calculate power root of a given number x
+Use bisection search to calculate power root of a given number x.
+If x is positive, only positive power root will be output.
 """
 
 
 def calculate_power_root(x, power=2):
     if x == 0:
         raise ValueError('input is invalid')
-    elif x > 0:
+
+    else:
         low = 0
-        high = x if x > 1 else 1
+        new_x = abs(x)
+        high = new_x if new_x > 1 else 1
         guess = (high + low) / 2
         limit = 0.00001
         guess_number = 0
 
-        while abs(guess ** power - x) >= limit:
-            if guess ** power > x:
+        while abs(guess ** power - new_x) >= limit:
+            if guess ** power > new_x:
                 high = guess
             else:
                 low = guess
@@ -22,7 +25,10 @@ def calculate_power_root(x, power=2):
             guess = (high + low) / 2
             guess_number += 1
 
-    print('Number of guess is %d' % guess_number)
+        print('Number of guess is %d' % guess_number)
 
-    return guess
+    if x > 0:
+        return guess
+    else:
+        return -guess
 
