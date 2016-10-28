@@ -1,6 +1,9 @@
 """
 Use bisection search to calculate power root of a given number x.
 If x is positive, only positive power root will be output.
+
+About bisection search: it will work for any sequence with "ordering"
+properties. That means fun(x) varies monotonically with x.
 """
 
 
