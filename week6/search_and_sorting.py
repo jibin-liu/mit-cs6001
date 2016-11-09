@@ -20,3 +20,23 @@ def linear_search(L, e):
             return True
 
     return False
+
+
+def bisection_search(L, e):
+    """
+    assume L is already sorted, and size won't change
+    """
+    if len(L) == 0:
+        return False
+    elif len(L) == 1:
+        return L[0] == e
+    else:
+        low = 0
+        high = len(L)
+        mid = (low + high) // 2
+        if L[mid] == e:
+            return True
+        elif L[mid] > e:
+            return bisection_search(L[:mid], e)
+        else:
+            return bisection_search(L[mid + 1:], e)
